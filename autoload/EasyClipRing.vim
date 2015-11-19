@@ -30,17 +30,21 @@ let s:ecr_max_pum_width = 40
 
 " =============================================================================
 " Mapping
+" Provide <Plug>(EasyClipRing)
 " Press <Leader>cr to get a pop-up menu to select a yank
 " =============================================================================
 
 function! g:ECR_BindMappings()
+  inoremap <silent>   <Plug>(EasyClipRing)  <C-R>=EasyClipYankPum()<CR>
+
+  " default key binding
   if exists('g:ecr_disable_default_mapping') && g:ecr_disable_default_mapping
     return
+  else
+    imap    <Leader>cr  <Plug>(EasyClipRing)
   endif
-
-  " key binding
-  inoremap <Leader>cr <C-R>=EasyClipYankPum()<CR>
 endfunction
+
 
 autocmd VimEnter * call g:ECR_BindMappings()
 
