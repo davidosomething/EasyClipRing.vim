@@ -49,6 +49,21 @@ endfunction
 autocmd VimEnter * call g:ECR_BindMappings()
 
 " =============================================================================
+" PUM and completion insertion settings
+" =============================================================================
+
+function! s:CompleteSetup()
+  let s:saveformatoptions = &formatoptions
+  set formatoptions-=c
+  execute 'set pumheight=' . s:ecr_max_pum_height
+endfunction
+
+function! s:CompleteTeardown()
+  let &formatoptions = s:saveformatoptions
+  execute 'set pumheight=' . s:ecr_original_pum_height
+endfunction
+
+" =============================================================================
 " Clean nulls from EasyClip completion result
 " =============================================================================
 
@@ -56,12 +71,12 @@ function! s:CleanNulls()
   if !s:ecr_in_complete | return | endif
   let s:ecr_in_complete = 0
 
-  if !exists('v:completed_item') || empty(v:completed_item)
-    return
+  if exists('v:completed_item') && !empty(v:completed_item)
+    " @TODO fix copying multiline comments
+    execute 's/\%x00/\r/ge'
   endif
 
-  " @TODO fix copying multiline comments
-  execute 's/\%x00/\r/ge'
+  call s:CompleteTeardown()
 endfunction
 
 augroup EasyClipRing
@@ -90,18 +105,17 @@ function! s:YanksToArray()
   return yanks_array
 endfunction
 
-
 " =============================================================================
 " Trigger completion menu
 " =============================================================================
 
 function! EasyClipYankPum()
-  execute 'set pumheight=' . s:ecr_max_pum_height
   let s:ecr_in_complete = 1
+  call s:CompleteSetup()
   call complete(col('.'), s:YanksToArray())
-  execute 'set pumheight=' . s:ecr_original_pum_height
   return ''
-endfunc
+endfunction
+
 
 " =============================================================================
 " Done
