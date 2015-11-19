@@ -30,6 +30,10 @@ Define a custom mapping like so:
 
     imap    gcr  <Plug>(EasyClipRing)
 
+or for `<Ctrl-L>`
+
+    imap    <C-l>   <Plug>(EasyClipRing)
+
 Use it in in __insert__ mode to trigger the pop-up menu:
 
 ![Screenshot of output](screenshot.png)
