@@ -28,13 +28,6 @@ let s:ecr_max_pum_height = 10
 let s:ecr_max_pum_width = 40
 
 " ============================================================================
-" Mapping
-" Provide <Plug>(EasyClipRing)
-" ============================================================================
-
-inoremap <silent>   <Plug>(EasyClipRing)  <C-R>=EasyClipYankPum()<CR>
-
-" ============================================================================
 " PUM and completion insertion settings
 " ============================================================================
 
@@ -104,6 +97,13 @@ function! EasyClipYankPum()
   call complete(col('.'), s:YanksToArray())
   return ''
 endfunction
+
+" ============================================================================
+" Mapping
+" Provide <Plug>(EasyClipRing)
+" ============================================================================
+
+inoremap <silent>   <Plug>(EasyClipRing)  <C-R>=EasyClipYankPum()<CR>
 
 " ============================================================================
 " Done
