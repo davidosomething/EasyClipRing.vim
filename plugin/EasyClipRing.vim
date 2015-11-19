@@ -2,7 +2,7 @@ set encoding=utf-8 nobomb
 scriptencoding UTF-8
 
 " ============================================================================
-" EasyClipRing.vim v1.1.0
+" EasyClipRing.vim v1.2.0
 " ----------------------------------------------------------------------------
 " Author:   David O'Trakoun <me@davidosomething.com>
 " Homepage: http://github.com/davidosomething/EasyClipRing.vim

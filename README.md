@@ -1,4 +1,4 @@
-# EasyClipRing.vim v1.1.0
+# EasyClipRing.vim v1.2.0
 
 Autocomplete style vim pop-up menu for your registers. See screenshot in
 the [Usage](#usage) section.
@@ -42,6 +42,9 @@ who really helped with the formatting!
 - [Steve Vermeulen](https://github.com/svermeulen/) for creating easyclip
 
 ## Changelog
+
+- 1.2.0
+    - Fix mappings and restructure plugin.
 
 - 1.1.0
     - Remove default mapping altogether, especially since it makes it hard to
