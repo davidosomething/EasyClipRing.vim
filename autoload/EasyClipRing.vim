@@ -2,24 +2,6 @@ set encoding=utf-8 nobomb
 scriptencoding UTF-8
 
 " ============================================================================
-" EasyClipRing.vim v1.1.0
-" ----------------------------------------------------------------------------
-" Provides an pum completion for EasyClip yanks.
-" Requires vim-easyclip installed.
-" ============================================================================
-
-" ============================================================================
-" Bootstrap plugin
-" ============================================================================
-
-"if exists('g:loaded_EasyClipRing') | finish | endif
-let g:loaded_EasyClipRing = 1
-let s:keepcpo = &cpo
-set cpo&vim
-
- 
-
-" ============================================================================
 " Private vars
 " ============================================================================
 
@@ -33,13 +15,13 @@ let s:ecr_max_pum_width = 40
 " PUM and completion insertion settings
 " ============================================================================
 
-function! s:CompleteSetup()
+function! EasyClipRing#CompleteSetup()
   let s:saveformatoptions = &formatoptions
   set formatoptions-=c
   execute 'set pumheight=' . s:ecr_max_pum_height
 endfunction
 
-function! s:CompleteTeardown()
+function! EasyClipRing#CompleteTeardown()
   let &formatoptions = s:saveformatoptions
   execute 'set pumheight=' . s:ecr_original_pum_height
 endfunction
@@ -48,28 +30,22 @@ endfunction
 " Clean nulls from EasyClip completion result
 " ============================================================================
 
-function! s:CleanNulls()
+function! EasyClipRing#CleanNulls()
   if !s:ecr_in_complete | return | endif
   let s:ecr_in_complete = 0
 
   if exists('v:completed_item') && !empty(v:completed_item)
-    " @TODO fix copying multiline comments
     execute 's/\%x00/\r/ge'
   endif
 
-  call s:CompleteTeardown()
+  call EasyClipRing#CompleteTeardown()
 endfunction
-
-augroup EasyClipRing
-  autocmd!
-  autocmd CompleteDone * call s:CleanNulls()
-augroup END
 
 " ============================================================================
 " Create completion dictionary
 " ============================================================================
 
-function! s:YanksToArray()
+function! EasyClipRing#YanksToArray()
   let yanks_array = []
   for yank in EasyClip#Yank#EasyClipGetAllYanks()
     let text = yank.text
@@ -90,28 +66,14 @@ endfunction
 " Trigger completion menu
 " ============================================================================
 
-function! s:TriggerPum()
+function! EasyClipRing#TriggerPum()
   " Requires EasyClip! Check here in case it was lazy-loaded
   if !exists('g:EasyClipYankHistorySize') | return | endif
 
   let s:ecr_in_complete = 1
-  call s:CompleteSetup()
-  call complete(col('.'), s:YanksToArray())
+  call EasyClipRing#CompleteSetup()
+  call complete(col('.'), EasyClipRing#YanksToArray())
   return ''
 endfunction
 
-" ============================================================================
-" Mapping
-" Provide <Plug>(EasyClipRing)
-" ============================================================================
-
-autocmd VimEnter *
-      \ inoremap <script> <Plug>EasyClipRing <C-R>=<SID>TriggerPum()<CR>
-
-" ============================================================================
-" Done
-" ============================================================================
-
-let &cpo= s:keepcpo
-unlet s:keepcpo
 
