@@ -12,11 +12,10 @@ scriptencoding UTF-8
 " Bootstrap plugin
 " =============================================================================
 
-"if exists('g:loaded_EasyClipRing') | finish | endif
+if exists('g:loaded_EasyClipRing') | finish | endif
 let g:loaded_EasyClipRing = 1
 let s:keepcpo = &cpo
 set cpo&vim
-
 
 " =============================================================================
 " Private vars
@@ -44,7 +43,6 @@ function! g:ECR_BindMappings()
     imap    <Leader>cr  <Plug>(EasyClipRing)
   endif
 endfunction
-
 
 autocmd VimEnter * call g:ECR_BindMappings()
 
@@ -110,6 +108,9 @@ endfunction
 " =============================================================================
 
 function! EasyClipYankPum()
+  " Requires EasyClip! Check here in case it was lazy-loaded
+  if !exists('g:EasyClipYankHistorySize') | return | endif
+
   let s:ecr_in_complete = 1
   call s:CompleteSetup()
   call complete(col('.'), s:YanksToArray())
