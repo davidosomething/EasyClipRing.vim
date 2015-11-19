@@ -2,9 +2,10 @@ set encoding=utf-8 nobomb
 scriptencoding UTF-8
 
 " ============================================================================
-" EasyClip ring
-" Requires vim-easyclip installed
-" Press <Leader>cr to get a pop-up menu to select a yank
+" EasyClipRing.vim
+" ----------------------------------------------------------------------------
+" Provides an pum completion for EasyClip yanks.
+" Requires vim-easyclip installed.
 " ============================================================================
 
 " =============================================================================
@@ -25,9 +26,10 @@ let s:ecr_max_pum_width = 40
 
 " =============================================================================
 " Mapping
+" Press <Leader>cr to get a pop-up menu to select a yank
 " =============================================================================
 
-function! s:BindMappings()
+function! g:ECR_BindMappings()
   if exists('g:ecr_disable_default_mapping') && g:ecr_disable_default_mapping
     return
   endif
@@ -36,8 +38,7 @@ function! s:BindMappings()
   inoremap <Leader>cr <C-R>=EasyClipYankPum()<CR>
 endfunction
 
-autocmd VimEnter * call s:BindMappings()
-call s:BindMappings()
+autocmd VimEnter * call g:ECR_BindMappings()
 
 " =============================================================================
 " Clean nulls from EasyClip completion result
