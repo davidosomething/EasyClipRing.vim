@@ -90,7 +90,7 @@ endfunction
 " Trigger completion menu
 " ============================================================================
 
-function! s:EasyClipYankPum()
+function! s:TriggerPum()
   " Requires EasyClip! Check here in case it was lazy-loaded
   if !exists('g:EasyClipYankHistorySize') | return | endif
 
@@ -105,7 +105,8 @@ endfunction
 " Provide <Plug>(EasyClipRing)
 " ============================================================================
 
-inoremap <script> <Plug>EasyClipRing <C-R>=<SID>EasyClipYankPum()<CR>
+autocmd VimEnter *
+      \ inoremap <script> <Plug>EasyClipRing <C-R>=<SID>TriggerPum()<CR>
 
 " ============================================================================
 " Done
