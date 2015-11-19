@@ -105,7 +105,7 @@ endfunction
 " Provide <Plug>(EasyClipRing)
 " ============================================================================
 
-inoremap <Plug>(EasyClipRing) <C-R>=<SID>EasyClipYankPum()<CR>
+inoremap <script> <Plug>EasyClipRing <C-R>=<SID>EasyClipYankPum()<CR>
 
 " ============================================================================
 " Done
