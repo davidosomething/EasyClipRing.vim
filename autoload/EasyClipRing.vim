@@ -12,10 +12,12 @@ scriptencoding UTF-8
 " Bootstrap plugin
 " ============================================================================
 
-if exists('g:loaded_EasyClipRing') | finish | endif
+"if exists('g:loaded_EasyClipRing') | finish | endif
 let g:loaded_EasyClipRing = 1
 let s:keepcpo = &cpo
 set cpo&vim
+
+ 
 
 " ============================================================================
 " Private vars
@@ -88,7 +90,7 @@ endfunction
 " Trigger completion menu
 " ============================================================================
 
-function! EasyClipYankPum()
+function! s:EasyClipYankPum()
   " Requires EasyClip! Check here in case it was lazy-loaded
   if !exists('g:EasyClipYankHistorySize') | return | endif
 
@@ -103,7 +105,7 @@ endfunction
 " Provide <Plug>(EasyClipRing)
 " ============================================================================
 
-inoremap <silent>   <Plug>(EasyClipRing)  <C-R>=EasyClipYankPum()<CR>
+inoremap <Plug>(EasyClipRing) <C-R>=<SID>EasyClipYankPum()<CR>
 
 " ============================================================================
 " Done
