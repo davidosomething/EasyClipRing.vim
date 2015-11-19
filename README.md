@@ -48,7 +48,7 @@ who really helped with the formatting!
 ## Changelog
 
 - 1.2.1
-    - Remove set encoding from plugin file
+    - Remove set encoding from plugin files
 
 - 1.2.0
     - Fix mappings and restructure plugin.
