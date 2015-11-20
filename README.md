@@ -1,10 +1,13 @@
-# EasyClipRing.vim v1.2.1
+# EasyClipRing.vim v1.2.2
 
 Autocomplete style vim pop-up menu for your registers. See screenshot in
 the [Usage](#usage) section.
 
 This plugin requires [vim-easyclip](https://github.com/svermeulen/vim-easyclip)
 which requires [vim-repeat](https://github.com/tpope/vim-repeat)
+
+Report issues to this plugin's official GitHub repo at
+[https://github.com/davidosomething/EasyClipRing.vim](https://github.com/davidosomething/EasyClipRing.vim)
 
 ## Installation
 
@@ -46,6 +49,9 @@ who really helped with the formatting!
 - [Steve Vermeulen](https://github.com/svermeulen/) for creating easyclip
 
 ## Changelog
+
+- 1.2.2
+    - Initialize `let s:saveformatoptions = &formatoptions`
 
 - 1.2.1
     - Remove set encoding from plugin files

@@ -1,7 +1,7 @@
 scriptencoding UTF-8
 
 " ============================================================================
-" EasyClipRing.vim v1.2.1
+" EasyClipRing.vim v1.2.2
 " ----------------------------------------------------------------------------
 " Author:   David O'Trakoun <me@davidosomething.com>
 " Homepage: http://github.com/davidosomething/EasyClipRing.vim

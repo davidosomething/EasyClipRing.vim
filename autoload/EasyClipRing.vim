@@ -6,6 +6,7 @@ scriptencoding UTF-8
 
 let s:ecr_in_complete   = 1
 
+let s:saveformatoptions = &formatoptions
 let s:ecr_original_pum_height = &pumheight
 let s:ecr_max_pum_height = 10
 let s:ecr_max_pum_width = 40
