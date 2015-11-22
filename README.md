@@ -3,6 +3,8 @@
 Autocomplete style vim pop-up menu for your registers. See screenshot in
 the [Usage](#usage) section.
 
+This plugin requires Vim 7.4.774 or neovim for the `v:completed_item` feature.
+
 This plugin requires [vim-easyclip](https://github.com/svermeulen/vim-easyclip)
 which requires [vim-repeat](https://github.com/tpope/vim-repeat)
 
